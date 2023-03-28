@@ -1,0 +1,16 @@
+[user]
+  name = Steven Deobald
+  email = steven@deobald.ca
+[alias]
+  co = checkout
+  ci = commit
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[core]
+  excludesfile = /home/steven/.gitignore
+  editor = vim 
+[apply]
+  whitespace = nowarn
+

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+replace=""
+
+for f in $(ls)
+do
+  test $f = "install" && continue
+  test $f = "README.md" && continue
+  test $f = "bashrc" && continue
+
+  dest="$HOME/.$f"
+  file="$PWD/$f"
+  if [ -e $dest ] || [ -h $dest ]; then
+    if [ "$replace" != "a" ]; then 
+      echo "$dest already exists, replace? [y/n/a] "
+      read replace
+    fi
+    if [ "$replace" = "a" ] || [ "$replace" = "y" ]; then
+      echo "linking $file to $dest..."
+      rm -f $dest
+      ln -s $file $dest
+      test "$replace" != "a" && replace=""
+    else
+      echo "skipping $file as it already exists..."
+    fi
+  else
+    echo "linking $file to $dest..."
+    ln -s $file $dest
+  fi
+done
+
+cat "$PWD/bashrc" >> "$HOME/.bashrc"
+echo "bashrc was blindly applied to $HOME/.bashrc ... double-check it."
+
