@@ -32,6 +32,7 @@ export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # functions ---------------------------------------------------
 
