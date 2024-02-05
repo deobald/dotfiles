@@ -1,6 +1,7 @@
 [user]
   name = Steven Deobald
   email = steven@deobald.ca
+	signingkey = 75D84866CC3F844A
 [alias]
   co = checkout
   ci = commit
@@ -14,3 +15,10 @@
 [apply]
   whitespace = nowarn
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgsign = true

@@ -44,9 +44,35 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
   export PS1='\[\033[01;34m\]\w\[\033[00m\]\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[00m\] \n$ '
 fi
 
+# CLI and history ---------------------------------------------
+
+# ydotool (custom build)
+export YDOTOOL_SOCKET=/tmp/.ydotool_socket
+
+# Atuin
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
+
+# environments ------------------------------------------------
+
+# rust
+. "$HOME/.cargo/env"
+
 # rbenv
 eval "$(rbenv init -)"
 
+# node
 export NODE_PATH=/opt/node:/opt/node/lib/node_modules
 export PATH=$PATH:/opt/node/bin
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
