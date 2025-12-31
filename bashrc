@@ -1,7 +1,7 @@
 
 # os ----------------------------------------------------------
 
-source .bashrc_debian
+source $HOME/.bashrc_debian
 
 # environment -------------------------------------------------
 
@@ -52,7 +52,9 @@ fi
 # ydotool (custom build)
 export YDOTOOL_SOCKET=/tmp/.ydotool_socket
 
-# Atuin
+# atuin -------------------------------------------------------
+
+source "$HOME/.atuin/bin/env"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 
