@@ -1,4 +1,8 @@
 
+# os ----------------------------------------------------------
+
+source .bashrc_debian
+
 # environment -------------------------------------------------
 
 # scm
@@ -29,8 +33,7 @@ alias glg='git log --pretty=oneline'
 
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 
-export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -55,24 +58,20 @@ eval "$(atuin init bash)"
 
 # environments ------------------------------------------------
 
-# rust
-. "$HOME/.cargo/env"
+# curl https://mise.run | sh
 
-# rbenv
-eval "$(rbenv init -)"
+export PATH=$PATH:~/.local/share/mise/shims
 
-# node
-export NODE_PATH=/opt/node:/opt/node/lib/node_modules
-export PATH=$PATH:/opt/node/bin
+eval "$(/home/steven/.local/bin/mise activate bash)"
 
-# nvm
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(mise activate bash)"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
